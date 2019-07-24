@@ -2,7 +2,7 @@
 * @Author: sottxiong
 * @Date:   2019-07-07 16:28:34
 * @Last Modified by:   scottxiong
-* @Last Modified time: 2019-07-24 21:45:35
+* @Last Modified time: 2019-07-24 21:53:42
  */
 package gcmd
 
@@ -60,9 +60,9 @@ func ask_question(q string, color *color.Color) string {
 
 func command(q *Question) {
 	data := ask_question(q.Tip, boldGreen)
-	re := regexp.MustCompile(data)
+	re := regexp.MustCompile(q.Re)
 	for {
-		match := re.FindString(q.Re)
+		match := re.FindString(data)
 		if len(match) > 0 {
 			answers[q.Name] = data
 			break
